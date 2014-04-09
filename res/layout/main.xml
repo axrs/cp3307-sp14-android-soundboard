@@ -7,7 +7,7 @@
                android:layout_height="fill_parent"
 
             />
-    <com.cadcoder.SoundBoard.Soundview
+    <com.cadcoder.SoundBoard.SoundView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:id="@+id/soundBoard"

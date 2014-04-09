@@ -6,21 +6,21 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class Soundview extends View {
+public class SoundView extends View {
 
-    private Boolean _paintRegions = true;
+    private Boolean _paintRegions = false;
 
     private SoundStrategy _soundStrategy;
 
-    public Soundview(Context context) {
+    public SoundView(Context context) {
         super(context);
     }
 
-    public Soundview(Context context, AttributeSet attrs) {
+    public SoundView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public Soundview(Context context, AttributeSet attrs, int defStyle) {
+    public SoundView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
@@ -44,12 +44,19 @@ public class Soundview extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()) {
+
+        switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
                 getSoundStrategy().onTouch(event.getX(), event.getY());
                 break;
-        }
 
+            case MotionEvent.ACTION_POINTER_DOWN:
+                for (int i = 1; i < event.getPointerCount(); i++) {
+                    int index = event.findPointerIndex(event.getPointerId(i));
+                    getSoundStrategy().onTouch(event.getX(index), event.getY(index));
+                }
+                break;
+        }
         return true;
     }
 

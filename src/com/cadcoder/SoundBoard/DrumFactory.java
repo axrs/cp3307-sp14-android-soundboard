@@ -4,15 +4,10 @@ import android.content.Context;
 import android.graphics.RectF;
 import android.media.SoundPool;
 
-/**
- * Created by Xander on 8/04/2014.
- */
 public class DrumFactory {
-
 
     private static InstrumentComponent createComponent(float left, float top, float right, float bottom) {
         RectF bounds = new RectF(left, top, right, bottom);
-
         InstrumentComponent component = new InstrumentComponent(bounds);
         return component;
     }

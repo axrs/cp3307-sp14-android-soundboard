@@ -3,7 +3,7 @@ package com.cadcoder.SoundBoard;
 import android.graphics.PointF;
 import android.graphics.RectF;
 
-public class InstrumentComponent {
+public class InstrumentComponent extends Audible {
 
     private RectF _hitBounds;
     private int _resourceId = 0;
